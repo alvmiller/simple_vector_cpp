@@ -1,3 +1,5 @@
+// GPL-3.0-only
+
 #pragma once
 
 #include <algorithm>
@@ -20,6 +22,7 @@ namespace simplecontainer {
 // @TODO: Add erase() and clear()
 // @TODO: Think about data()
 // @TODO: Add Doxygen comments
+// @TODO: Add Licence
 
 // Storage: exceptions safe dynamical allocated block storage
 // Vector: dynamical array with elements access
