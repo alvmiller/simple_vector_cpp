@@ -61,7 +61,7 @@ protected:
         }
         ::operator delete(data_);
     }
-}; // SimpleVectorStorage
+}; // class SimpleVectorStorage
 
 //------------------------------------------------------------------------------------------------//
 
@@ -187,7 +187,7 @@ public:
         }
 
         bool operator==(const iterator &second) const noexcept = default;
-    }; // iterator
+    }; // class iterator
 
     class const_iterator final {
         iterator it_;
@@ -228,7 +228,7 @@ public:
         }
 
         bool operator==(const const_iterator &sd) const noexcept = default;
-    }; // const iterator
+    }; // class const iterator
 
     iterator begin() noexcept {
         return iterator(data_);
@@ -390,8 +390,8 @@ public:
         }
         return false;
     }
-}; // SimpleVector
+}; // class SimpleVector
 
 //------------------------------------------------------------------------------------------------//
 
-} // simplecontainer
+} // namespace simplecontainer
