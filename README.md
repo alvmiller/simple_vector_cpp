@@ -1,2 +1,2 @@
-# simple_vector_cpp
+# Simple Vector CPP
 Simple example of vector container (C++)
