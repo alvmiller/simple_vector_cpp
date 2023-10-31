@@ -23,6 +23,7 @@ namespace simplecontainer {
 // @TODO: Think about data()
 // @TODO: Add Doxygen comments
 // @TODO: Add Licence
+// @TODO: Try to add "&operator+=(int n)" and "&operator-=(int n)" to Iterator
 
 // Storage: exceptions safe dynamical allocated block storage
 // Vector: dynamical array with elements access
@@ -153,6 +154,7 @@ public:
         iterator(T *ptr) noexcept : ptr_(ptr) {}
 
     public:
+        using iterator_type = iterator;
         using iterator_category = std::bidirectional_iterator_tag;
         using value_type = int;
         using difference_type = ptrdiff_t;
@@ -166,6 +168,10 @@ public:
         T &operator*() const noexcept {
             return *ptr_;
         }
+        
+        T *operator->() const {
+            return ptr_;
+        }
 
         iterator &operator++() noexcept {
             ++ptr_;
@@ -173,9 +179,9 @@ public:
         }
 
         iterator operator++(int) noexcept {
-            iterator copy{*this};
-            ++ptr_;
-            return copy;
+            auto tmp{*this};
+            ++(*this); // ++ptr_
+            return tmp;
         }
 
         iterator &operator--() noexcept {
@@ -184,12 +190,13 @@ public:
         }
 
         iterator operator--(int) noexcept {
-            iterator copy{*this};
-            --ptr_;
-            return copy;
+            auto tmp{*this};
+            --(*this); // --ptr_
+            return tmp;
         }
 
         bool operator==(const iterator &second) const noexcept = default;
+        bool operator!=(const iterator &second) const noexcept = default;
     }; // class iterator
 
     class const_iterator final {
@@ -231,6 +238,7 @@ public:
         }
 
         bool operator==(const const_iterator &sd) const noexcept = default;
+        bool operator!=(const const_iterator &sd) const noexcept = default;
     }; // class const iterator
 
     iterator begin() noexcept {
