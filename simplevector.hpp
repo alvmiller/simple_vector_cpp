@@ -147,23 +147,23 @@ public:
     }
 
 public:
-    class iterator final {
+    class SimpleVectorIterator final {
         friend SimpleVector;
         T *ptr_;
 
-        iterator(T *ptr) noexcept : ptr_(ptr) {}
+        SimpleVectorIterator(T *ptr) noexcept : ptr_(ptr) {}
 
     public:
-        using iterator_type = iterator;
+        using iterator_type = SimpleVectorIterator;
         using iterator_category = std::bidirectional_iterator_tag;
         using value_type = int;
         using difference_type = ptrdiff_t;
         using pointer = value_type*;
         using reference = value_type&;
 
-        iterator(const iterator &) = default;
+        SimpleVectorIterator(const SimpleVectorIterator &) = default;
 
-        iterator &operator=(const iterator &) = default;
+        SimpleVectorIterator &operator=(const SimpleVectorIterator &) = default;
 
         T &operator*() const noexcept {
             return *ptr_;
@@ -173,96 +173,97 @@ public:
             return ptr_;
         }
 
-        iterator &operator++() noexcept {
+        SimpleVectorIterator &operator++() noexcept {
             ++ptr_;
             return *this;
         }
 
-        iterator operator++(int) noexcept {
+        SimpleVectorIterator operator++(int) noexcept {
             auto tmp{*this};
             ++(*this); // ++ptr_
             return tmp;
         }
 
-        iterator &operator--() noexcept {
+        SimpleVectorIterator &operator--() noexcept {
             --ptr_;
             return *this;
         }
 
-        iterator operator--(int) noexcept {
+        SimpleVectorIterator operator--(int) noexcept {
             auto tmp{*this};
             --(*this); // --ptr_
             return tmp;
         }
 
-        bool operator==(const iterator &second) const noexcept = default;
-        bool operator!=(const iterator &second) const noexcept = default;
-    }; // class iterator
+        bool operator==(const SimpleVectorIterator &second) const noexcept = default;
+        bool operator!=(const SimpleVectorIterator &second) const noexcept = default;
+    }; // class SimpleVectorIterator (iterator)
 
-    class const_iterator final {
-        iterator it_;
+    class ConstSimpleVectorIterator final {
+        SimpleVectorIterator it_;
 
     public:
+        using iterator_type = ConstSimpleVectorIterator;
         using iterator_category = std::bidirectional_iterator_tag;
         using value_type = int;
         using difference_type = ptrdiff_t;
         using pointer = value_type*;
         using reference = value_type&;
 
-        const_iterator(const iterator &it) noexcept : it_(it) {}
+        ConstSimpleVectorIterator(const SimpleVectorIterator &it) noexcept : it_(it) {}
 
-        const_iterator(const const_iterator &) = default;
+        ConstSimpleVectorIterator(const ConstSimpleVectorIterator &) = default;
 
-        const_iterator &operator=(const const_iterator &) = default;
+        ConstSimpleVectorIterator &operator=(const ConstSimpleVectorIterator &) = default;
 
         const T &operator*() const noexcept {
             return *it_;
         }
 
-        const_iterator &operator++() {
+        ConstSimpleVectorIterator &operator++() {
             ++it_;
             return *this;
         }
 
-        const_iterator operator++(int) {
+        ConstSimpleVectorIterator operator++(int) {
             return it_++;
         }
 
-        const_iterator &operator--() {
+        ConstSimpleVectorIterator &operator--() {
             --it_;
             return *this;
         }
 
-        const_iterator operator--(int) {
+        ConstSimpleVectorIterator operator--(int) {
             return --it_;
         }
 
-        bool operator==(const const_iterator &sd) const noexcept = default;
-        bool operator!=(const const_iterator &sd) const noexcept = default;
-    }; // class const iterator
+        bool operator==(const ConstSimpleVectorIterator &sd) const noexcept = default;
+        bool operator!=(const ConstSimpleVectorIterator &sd) const noexcept = default;
+    }; // class ConstSimpleVectorIterator (const iterator)
 
-    iterator begin() noexcept {
-        return iterator(data_);
+    SimpleVectorIterator begin() noexcept {
+        return SimpleVectorIterator(data_);
     }
 
-    iterator end() noexcept {
-        return iterator(data_ + size_);
+    SimpleVectorIterator end() noexcept {
+        return SimpleVectorIterator(data_ + size_);
     }
 
-    const_iterator begin() const noexcept {
-        return const_iterator(data_);
+    ConstSimpleVectorIterator begin() const noexcept {
+        return ConstSimpleVectorIterator(data_);
     }
 
-    const_iterator end() const noexcept {
-        return const_iterator(data_ + size_);
+    ConstSimpleVectorIterator end() const noexcept {
+        return ConstSimpleVectorIterator(data_ + size_);
     }
 
-    const_iterator cbegin() const noexcept {
-        return const_iterator(data_);
+    ConstSimpleVectorIterator cbegin() const noexcept {
+        return ConstSimpleVectorIterator(data_);
     }
 
-    const_iterator cend() const noexcept {
-        return const_iterator(data_ + size_);
+    ConstSimpleVectorIterator cend() const noexcept {
+        return ConstSimpleVectorIterator(data_ + size_);
     }
 
 public:
