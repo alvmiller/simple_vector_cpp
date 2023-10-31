@@ -9,6 +9,8 @@
 //    https://en.cppreference.com/w/cpp/container/vector
 //    https://github.com/tilir/cpp-graduate/blob/master/14-iterators/wrongit.cc
 //    https://github.com/llvm-mirror/libcxx/blob/master/include/vector
+//    https://godbolt.org/z/qreGv5aEM
+//    https://github.com/tilir/cpp-graduate/blob/master/18-constexpr/concept-overload.cc
 
 //std::vector<int> vect{} - empty vector
 //std::vector<int> vect - empty vector
