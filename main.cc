@@ -52,6 +52,13 @@ int main([[maybe_unused]] int argc,
         print_sv(vd);
 
         std::cout << "Distance: " << std::distance(vi.begin(), vi.end()) << std::endl;
+        
+        simplecontainer::SimpleVector<int> vec0 = {10, 20, 30, 40, 50};
+        std::cout << "vec0 (const iter):";
+        for (auto it = vec0.cbegin(); it != vec0.cend(); ++it) {
+            std::cout << ' ' << *it;
+        }
+        std::cout << '\n';
     }
     catch (...) {
         std::cout << "Some exception catched!" << std::endl;
