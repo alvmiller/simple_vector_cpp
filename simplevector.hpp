@@ -338,6 +338,20 @@ public:
         return;
     }
 
+#if 0
+	template<class Arg> void push(Arg&& value, size_t id) {
+		if (id < size_) {
+		    data_[id] = value;
+		} else if (id == size_) {
+		    push(value);
+		} else {
+		    throw std::invalid_argument("SimpleVector bad index.");
+		}
+
+        return;
+    }
+#endif
+
     void pop() {
         if (size_ == 0) {
             throw std::invalid_argument("SimpleVector is empty.");
