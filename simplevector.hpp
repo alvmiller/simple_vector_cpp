@@ -14,16 +14,15 @@ namespace simplecontainer {
 
 // @TODO: Add unit tests
 // @TODO: Add cmake script
-// @TODO: Check capacity_, size_ and data_ usage when they can be 0, 0 and nullptr
 // @TODO: Use C++20 Concepts instead of the tag dispatch mechanism in iterators
 // @TODO: Add rbegin() and crbegin() to iterators
-// @TODO: Move allocation strategy to service function from push()
 // @TODO: Update code for exception in push()
 // @TODO: Add erase() and clear()
 // @TODO: Think about data()
 // @TODO: Add Doxygen comments
-// @TODO: Add Licence
 // @TODO: Try to add "&operator+=(int n)" and "&operator-=(int n)" to Iterator
+// @TODO: Think about lock-free vector
+// @TODO: Think about lock by mutex vector's data fields
 
 // Storage: exceptions safe dynamical allocated block storage
 // Vector: dynamical array with elements access
