@@ -281,6 +281,13 @@ public:
         return *this = std::move(tmp);
     }
 
+#if 0
+    SimpleVector &operator=(SimpleVector copy) {
+        std::swap(*this, copy);
+        return *this;
+    }
+#endif
+
     template<class Arg = T, class = CopyCtor<Arg>>
     SimpleVector(std::initializer_list<T> init_list) : SimpleVectorStorage<T>{init_list.size()} {
         static_assert(std::is_same_v<Arg, T>, "Arg should be default type T.");
